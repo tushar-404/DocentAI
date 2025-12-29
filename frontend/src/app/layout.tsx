@@ -1,13 +1,29 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Rasa, Inter, JetBrains_Mono } from "next/font/google";
+import Navbar from "../components/layout/Navbar";
 import "./globals.css";
-import Sidebar from "@/components/layout/Sidebar"; 
+import { Provider as JotaiProvider } from "jotai";
+import SessionProvider from "@/components/providers/SessionProviders"
 
-const inter = Inter({ subsets: ["latin"] });
+const rasa = Rasa({
+  subsets: ["latin"],
+  variable: "--font-rasa",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+});
 
 export const metadata: Metadata = {
   title: "Docent AI",
-  description: "Chat with your documentation",
+  description: "Master any documentation instantly.",
 };
 
 export default function RootLayout({
@@ -17,12 +33,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-black text-white h-screen flex overflow-hidden`}>
-        <Sidebar />
-        
-        <main className="flex-1 relative h-full">
-          {children}
-        </main>
+      <body
+        className={`${rasa.variable} ${inter.variable} ${jetbrains.variable} font-sans antialiased text-titanium-100 flex flex-col h-screen overflow-hidden bg-linear-to-br from-titanium-950 via-[#020617] to-black`}
+      >
+        <div className="fixed inset-0 -z-50 pointer-events-none">
+          <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[80%] h-[60vh] bg-(--accent-color)/10 blur-[120px] rounded-full mix-blend-screen transition-colors duration-700"></div>
+        </div>
+
+        <SessionProvider>
+          <JotaiProvider>
+            <Navbar />
+            {children}
+          </JotaiProvider>
+        </SessionProvider>
       </body>
     </html>
   );

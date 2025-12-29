@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import { ChevronRight, Plus, Settings } from "lucide-react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import { db } from "../../lib/db";
+import { db } from "@/lib/db";
 import { useAtom } from "jotai";
-import { sidebarOpenAtom } from "../../atom";
+import { sidebarOpenAtom } from "@/atom";
 
 interface SidebarProps {
   onNewChat: () => void;
