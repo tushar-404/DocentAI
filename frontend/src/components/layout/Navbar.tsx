@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -17,8 +17,8 @@ import { useAtom } from "jotai";
 import { useSession, signOut } from "next-auth/react";
 
 import { sidebarOpenAtom } from "@/atom";
-import { RESOURCES_MENU } from "@/lib/constant" 
-import Button from "@/components/ui/Button"
+import { RESOURCES_MENU } from "@/lib/constants"; 
+import Button from "../ui/Button"; 
 
 export default function Navbar() {
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
@@ -44,7 +44,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 w-full z-50 border-b border-titanium-800 bg-linear-to-r from-titanium-950/80 via-black/80 to-titanium-950/80 backdrop-blur-md">
       <div className="w-full px-4 h-16 flex items-center justify-between font-sans relative">
-      
+        {/* 1. LEFT: Menu Toggle + Logo */}
         <div className="flex items-center gap-4 z-20">
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -67,10 +67,11 @@ export default function Navbar() {
           </Link>
         </div>
 
+        {/* 2. CENTER: Navigation */}
         <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-6 text-sm font-medium text-titanium-400">
           <Link
             href="/community"
-            prefetch={true} 
+            prefetch={true} // Optimization: Preload page on hover
             className={clsx(
               "transition-colors",
               isActive("/community") ? "text-white" : "hover:text-titanium-100"
@@ -81,7 +82,7 @@ export default function Navbar() {
 
           <Link
             href="/help"
-            prefetch={true} 
+            prefetch={true} // Optimization: Preload page on hover
             className={clsx(
               "transition-colors",
               isActive("/help") ? "text-white" : "hover:text-titanium-100"
@@ -90,6 +91,7 @@ export default function Navbar() {
             Help
           </Link>
 
+          {/* Resources Dropdown */}
           <div
             className="relative h-16 flex items-center"
             onMouseEnter={() => setHoveredTab("resources")}
@@ -122,6 +124,7 @@ export default function Navbar() {
                   transition={{ duration: 0.2 }}
                   className="absolute top-full left-1/2 -translate-x-1/2 w-60 p-2 bg-titanium-950/95 border border-titanium-800 rounded-xl shadow-2xl z-50 backdrop-blur-xl flex flex-col"
                 >
+                  {/* Single Column Content */}
                   <div className="space-y-1">
                     {RESOURCES_MENU.resources.map((item) => (
                       <Link
@@ -153,6 +156,7 @@ export default function Navbar() {
           </Link>
         </nav>
 
+        {/* 3. RIGHT: Actions & Authentication */}
         <div className="flex items-center gap-4 z-20">
           {status === "loading" ? (
             <div className="w-8 h-8 bg-titanium-800 rounded-full animate-pulse" />

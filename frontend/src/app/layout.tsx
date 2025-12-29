@@ -3,7 +3,8 @@ import { Rasa, Inter, JetBrains_Mono } from "next/font/google";
 import Navbar from "../components/layout/Navbar";
 import "./globals.css";
 import { Provider as JotaiProvider } from "jotai";
-import SessionProvider from "@/components/providers/SessionProviders"
+import SessionProvider from "@/components/providers/SessionProvider";
+import ThemeManager from "@/components/providers/ThemeManager";
 
 const rasa = Rasa({
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({
 
         <SessionProvider>
           <JotaiProvider>
+            <ThemeManager />
             <Navbar />
             {children}
           </JotaiProvider>

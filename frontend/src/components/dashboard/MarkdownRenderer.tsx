@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
-import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
-import javascript from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
-import bash from "react-syntax-highlighter/dist/cjs/languages/prism/bash";
-import json from "react-syntax-highlighter/dist/cjs/languages/prism/json";
-import python from "react-syntax-highlighter/dist/cjs/languages/prism/python";
-import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx";
+import typescript from "react-syntax-highlighter/dist/esm/languages/prism/typescript";
+import javascript from "react-syntax-highlighter/dist/esm/languages/prism/javascript";
+import bash from "react-syntax-highlighter/dist/esm/languages/prism/bash";
+import json from "react-syntax-highlighter/dist/esm/languages/prism/json";
+import python from "react-syntax-highlighter/dist/esm/languages/prism/python";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkGfm from "remark-gfm";
 import { Check, Copy } from "lucide-react";
 

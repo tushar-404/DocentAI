@@ -65,6 +65,7 @@ export default function Sidebar({
         </button>
       </div>
 
+      {/* 2. MIDDLE: History List */}
       <div className="flex-1 overflow-y-auto custom-scrollbar px-2 space-y-1">
         {isOpen && (
           <div className="animate-in fade-in duration-300">
@@ -99,6 +100,7 @@ export default function Sidebar({
         )}
       </div>
 
+      {/* 3. BOTTOM: Settings */}
       <div className="p-2 border-t border-white/10 mt-auto flex flex-col">
         <button
           className={clsx(

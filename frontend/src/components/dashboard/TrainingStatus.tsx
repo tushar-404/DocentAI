@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Loader2, FileText} from "lucide-react";
 import clsx from "clsx";
 

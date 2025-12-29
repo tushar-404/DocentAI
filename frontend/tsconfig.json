@@ -10,8 +10,8 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "baseUrl": ".",
     "isolatedModules": true,
+    "baseUrl": ".",
     "jsx": "react-jsx",
     "incremental": true,
     "plugins": [

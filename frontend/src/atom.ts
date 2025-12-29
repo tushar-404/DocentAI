@@ -13,6 +13,7 @@ export const crawlDepthAtom = atomWithStorage<number>('docent-ai-crawl-depth', 2
 export const sidebarOpenAtom = atom(true);
 export const isLinkModeAtom = atom(false);
 
+// --- Personalization Types & Atoms ---
 export interface AISettings {
   verbosity: "concise" | "balanced" | "detailed";
   strictMode: boolean; 
