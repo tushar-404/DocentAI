@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import Sidebar from "@/components/layout/Sidebar"; 
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "DocentAI",
-  description: "Master any documentation instantly.",
+  title: "Docent AI",
+  description: "Chat with your documentation",
 };
 
 export default function RootLayout({
@@ -24,10 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${inter.className} bg-black text-white h-screen flex overflow-hidden`}>
+        <Sidebar />
+        
+        <main className="flex-1 relative h-full">
+          {children}
+        </main>
       </body>
     </html>
   );
