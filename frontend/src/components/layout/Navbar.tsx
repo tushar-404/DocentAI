@@ -99,7 +99,7 @@ export default function Navbar() {
           >
             <button
               className={clsx(
-                "flex items-center gap-1 transition-colors outline-none",
+                "flex items-center gap-1 cursor-pointer transition-colors outline-none",
                 hoveredTab === "resources"
                   ? "text-titanium-100"
                   : "hover:text-titanium-100"
