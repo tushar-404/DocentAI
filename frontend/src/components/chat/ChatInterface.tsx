@@ -19,7 +19,7 @@ import { db } from "@/lib/db";
 import { v4 as uuidv4 } from "uuid";
 import { motion, AnimatePresence } from "framer-motion";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 type Message = {
   role: "user" | "ai";
@@ -198,9 +198,7 @@ export default function ChatInterface() {
       if (urlMatch) {
         setCurrentStatus("Accessing URL...");
         setTrainingLogs((prev) => [...prev, `Found URL: ${urlMatch[0]}`]);
-
         try {
-          // Explicitly call the crawl endpoint FIRST
           const crawlRes = await fetch(`${API_URL}/crawl`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -280,7 +278,6 @@ export default function ChatInterface() {
     setCopiedIndex(index);
     setTimeout(() => setCopiedIndex(null), 2000);
   };
-
   return (
     <div className="fixed inset-0 flex w-full bg-transparent text-zinc-100 overflow-hidden font-sans pt-16">
       <Sidebar

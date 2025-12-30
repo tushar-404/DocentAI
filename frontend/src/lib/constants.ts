@@ -11,7 +11,6 @@ export const RESOURCES_MENU = {
     { title: "Documentation", href: "/docs", icon: Book },
     { title: "Blog", href: "/blog", icon: FileText },
     { title: "Library", href: "/gallery", icon: Library },
-    // Status removed as requested
   ],
   community: [
     { title: "Discord", href: "https://discord.com", icon: Disc },

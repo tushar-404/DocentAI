@@ -3,7 +3,7 @@
 import React from "react";
 import { User, Key, ShieldAlert } from "lucide-react";
 import { useSession, signOut } from "next-auth/react";
-import Button from "../../components/ui/Button";
+import Button from "@/components/ui/Button";
 import Image from "next/image";
 
 export default function SettingsPage() {

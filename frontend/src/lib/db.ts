@@ -23,7 +23,6 @@ interface ChatDB extends DBSchema {
   };
 }
 
-// Lazy Singleton: Only initialize when needed and ONLY in the browser
 let _dbPromise: Promise<IDBPDatabase<ChatDB>> | null = null;
 
 function getDB() {
