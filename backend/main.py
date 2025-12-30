@@ -1,3 +1,4 @@
+import subprocess
 import asyncio
 import io
 import logging
@@ -50,9 +51,17 @@ google_client = genai.Client(api_key=GEMINI_KEY)
 EMBEDDING_MODEL = "text-embedding-004"
 CHAT_MODEL = "llama-3.3-70b-versatile"
 
+print("🔧 Force-installing Chromium for Render...")
+try:
+    subprocess.run(["playwright", "install", "chromium"], check=True)
+    print("Chromium installed successfully.")
+except Exception as e:
+    print(f"Error installing Chromium: {e}")
+
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
+    allow_credentials=True,
     allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
